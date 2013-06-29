@@ -3,7 +3,7 @@
   "main": "index.html",
   "window": {
     "icon": "link.png",
-    "toolbar": true,
+    "toolbar": false,
     "width": 500,
     "height": 480,
     "position": "mouse",
