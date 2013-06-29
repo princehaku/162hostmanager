@@ -1,0 +1,17 @@
+{
+  "name": "162's Host Manager",
+  "main": "index.html",
+  "window": {
+    "icon": "link.png",
+    "toolbar": true,
+    "width": 500,
+    "height": 480,
+    "position": "mouse",
+    "min_width": 500,
+    "min_height": 480,
+    "show" :true 
+  },
+  "webkit": {
+    "plugin": true
+  }
+}
