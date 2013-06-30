@@ -91,11 +91,14 @@ var App=function(options){
     }
     self.checked=ko.observable(true);
     self.switchCheck = function(){
+        /**
         setTimeout(function(){
-            var checked = self.checked();
+            //var checked = self.checked();
 
             //if(chec)
         },50);
+        */
+        return true;
     }
     self.getDynamic = function(){
        
@@ -121,6 +124,7 @@ var App=function(options){
         $("#myModal").modal("show");
     }
     self.save = function(){
+
         if(self.checked()){
             console.log(self.urlSmartHost());
             httpget(self.urlSmartHost(),{},function(res){
@@ -149,6 +153,22 @@ var App=function(options){
                 });
                 //console.log(content);
             });
+        }else{
+            var  content =self.textGlobal() + "\n"+self.getDynamic()+"\n";
+            fs.writeFile("/etc/hosts",content,function(err){
+                    if(err){
+                        self.msgbox("写入文件失败,<br>请确保/etc/hosts文件可写.<br>您可以执行一下:<br><pre>sudo chmod a+w /etc/hosts</pre>");
+                        self.log("写入文件失败"+err);
+                    }else{
+                        //alert("写入成功");
+                        //现在把所有值记到当前的包里面;
+                        self.syncDb();
+                        self.msgbox("已经保存"+"<br>2秒后窗口会自动关闭");
+                        setTimeout(function(){
+                            $("#myModal").modal("hide");
+                        },2500);
+                    }
+                });
         }
     }
     self.syncDb = function(){
@@ -174,7 +194,11 @@ var App=function(options){
         self.urlSmartHost(data["urlSmartHost"]);
         //console.log("load from "+data["env"]);
         $("#to"+data["env"]).click();
-
+        if(data["checked"]){
+            self.checked(true);
+        }else{
+            self.checked(false);
+        }
         //self.checked(data["text"])
     }
     return self;
@@ -190,6 +214,7 @@ $(document).ready(
     }
 );
 $(document).keydown(function (evt) {
+    console.log(evt.keyCode);
     if(evt.keyCode==27){
         $("#myModal").modal("hide");
     }

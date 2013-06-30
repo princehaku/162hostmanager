@@ -1,106 +1,102 @@
 <!DOCTYPE html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>162cm's host manager</title>
-        <meta name="viewport" content="width=device-width">
-        <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-        <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-responsive.min.css">
-        <link rel="stylesheet" href="css/styles/sunburst.css">
-        <link rel="stylesheet" href="css/main.css">
+<head>
+ <meta charset="utf-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+ <title>162cm's host manager</title>
+ <meta name="viewport" content="width=device-width">
+ <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+ <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-responsive.min.css">
+ <link rel="stylesheet" href="css/styles/sunburst.css">
+ <link rel="stylesheet" href="css/main.css">
 
-        <script src="assets/jquery/jquery.min.js"></script>
-    <style>
-    body {
-        margin:0;
-        padding:0;
-        padding-top:.5em;
-        width: 480px;
-    }
-    textarea {
-        width: 430px;
-        height:100px;
-    }
-    h1 {
-        font-size: 16px;
-    }
-    .textarea-wrapper {
-        padding-left: 20px;
-    }
-    .alert {
-      position: absolute;
-      left: 50px;
-      top:50px;
-    }
-    </style>
-    </head>
-    <body > 
-
-
-<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  
-  <div class="modal-body">
-    <p>$msg</p>
-  </div>
-  <div class="modal-footer">
-    <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true"> 知道了</button>
-  </div>
-</div>
+ <script src="assets/jquery/jquery.min.js"></script>
+ <style>
+ body {
+   margin:0;
+   padding:0;
+   padding-top:.5em;
+   width: 480px;
+ }
+ textarea {
+   width: 430px;
+   height:100px;
+ }
+ h1 {
+   font-size: 16px;
+ }
+ .textarea-wrapper {
+   padding-left: 20px;
+ }
+ .alert {
+   position: absolute;
+   left: 50px;
+   top:50px;
+ }
+ </style>
+</head>
+<body > 
 
 
+ <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 
-      <div id="wrap">
-       <form class="form-horizontal" style>
-       <div class="control-group textarea-wrapper">
+   <div class="modal-body">
+     <p>$msg</p>
+   </div>
+   <div class="modal-footer">
+     <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true"> 知道了</button>
+   </div>
+ </div>
+ <div id="wrap">
+   <form class="form-horizontal" style>
+     <div class="control-group textarea-wrapper">
        <p class="title">
-       全局段:这里写的内容全部会生效
+         全局段:这里写的内容全部会生效
        </p>
-      <textarea type="text" id="textGlobal" placeholder="" data-bind="value:textGlobal">
-      </textarea>
-  </div>
-  
-         <div class="control-group textarea-wrapper">
+       <textarea type="text" id="textGlobal" placeholder="" data-bind="value:textGlobal">
+       </textarea>
+     </div>
+
+     <div class="control-group textarea-wrapper">
        <p class="title">
-       选择段:选到哪个环境，哪个环境的就会生效
+         选择段:选到哪个环境，哪个环境的就会生效
        </p>
-        <ul class="nav nav-tabs" id="myTab">
-  <li ><a href="#dev" data-bind="click:toDev" id="todev">开发环境</a></li>
-  <li><a href="#test" data-bind="click:toTest" id="totest">测试环境</a></li>
-  <li><a href="#pro" data-bind="click:toPro" id="topro">生产环境</a></li>
-</ul>
+       <ul class="nav nav-tabs" id="myTab">
+         <li ><a href="#dev" data-bind="click:toDev" id="todev">开发环境</a></li>
+         <li><a href="#test" data-bind="click:toTest" id="totest">测试环境</a></li>
+         <li><a href="#pro" data-bind="click:toPro" id="topro">生产环境</a></li>
+       </ul>
 
-<div class="tab-content">
-  <div class="tab-pane" id="dev">
-   <textarea type="text" id="textDev" placeholder="" data-bind="value:textDev">
-      </textarea>
-  </div>
-  <div class="tab-pane" id="test"> <textarea  id="textTest" placeholder=""       data-bind="value:textTest">
-      </textarea></div>
-  <div class="tab-pane" id="pro"> <textarea  id="textProduct" placeholder="" data-bind="value:textPro">
-      </textarea></div>
-</div>
-  </div>
-  <div class="textarea-wrapper">
-    <div class="">
-    <input type="checkbox"  id="smartHost" data-bind="checked:checked,click:switchCheck"> SmartHost : 这个网址里的内容会自动添加到Hosts里去.<input type="text" id="smartHost" placeholder="http://" value="https://smarthosts.googlecode.com/svn/trunk/hosts" class="input-xlarge" data-bind="value:urlSmartHost">
-    </div>
-  </div>
-      </form>
-    </div>
-    <div style="text-align:center;color:gray;">
-      162HostSwitch by 162cm (http://www.162cm.com/)
-    </div>
+       <div class="tab-content">
+         <div class="tab-pane" id="dev">
+           <textarea type="text" id="textDev" placeholder="" data-bind="value:textDev"></textarea>
+         </div>
+         <div class="tab-pane" id="test"> <textarea  id="textTest" placeholder=""  data-bind="value:textTest">
+         </textarea></div>
+         <div class="tab-pane" id="pro"> <textarea  id="textProduct" placeholder="" data-bind="value:textPro">
+         </textarea></div>
+       </div>
+     </div>
+     <div class="textarea-wrapper">
+       <div class="">
+        <input type="checkbox"  id="smartHost" data-bind="checked:checked,click:switchCheck"> SmartHost : 这个网址里的内容会自动添加到Hosts里去.<input type="text" id="smartHost" placeholder="http://" value="https://smarthosts.googlecode.com/svn/trunk/hosts" class="input-xlarge" data-bind="value:urlSmartHost">
+       </div>
+     </div>
+   </form>
+ </div>
+ <div style="text-align:center;color:gray;">
+   162HostSwitch by 162cm (http://www.162cm.com/)
+ </div>
 
-        <script src="assets/knockout/knockout-2.2.1.js"></script>
-        <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-        <script src="js/highlight.pack.js"></script>
-        <script src="js/kibo.js"></script>
-        <script src="js/main.js"></script>
-        <script>
-  $('#myTab a').click(function (e) {
-  e.preventDefault();
-  $(this).tab('show');
-})
-</script>
-    </body>
+ <script src="assets/knockout/knockout-2.2.1.js"></script>
+ <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+ <script src="js/highlight.pack.js"></script>
+ <script src="js/kibo.js"></script>
+ <script src="js/main.js"></script>
+ <script>
+ $('#myTab a').click(function (e) {
+   e.preventDefault();
+   $(this).tab('show');
+ })
+ </script>
+</body>
 </html>
